@@ -31,7 +31,6 @@ The code automates the process of:
 - Computing and saving image hashes,
 - Calculating pairwise Hamming distances for similarity analysis,
 - Producing frequency tables of similarity probabilities at various thresholds.
-
 This notebook is intended for fingerprint verification and image similarity analysis tasks.
 
-**Note:** The code in this notebook is adapted from the source referenced as https://github.com/JohannesBuchner/imagehash.
+**Note:** The code in this notebook was taken from source https://github.com/JohannesBuchner/imagehash.
