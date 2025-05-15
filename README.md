@@ -20,3 +20,18 @@ This Jupyter notebook implements a pipeline for processing fingerprint images, i
 | FPHashCalculation.py         | Import → Define hash function → List .jpg files → Calculate hashes → Save to CSV                       |
 | HammingDistanceComparison.py | Import → Define distance function → Read hash CSVs → Compute robustness/discrimination → Save to CSV   |
 | Threshold.py                 | Import → Define threshold functions → Read Hamming CSVs → Analyze thresholds → Save to CSV             |
+
+# Fingerprint Perceptual Hashing and Hamming Distance Analysis
+
+This Jupyter notebook implements a pipeline for computing perceptual hashes of fingerprint images using multiple hashing techniques (average_hash, phash, dhash, whash), calculating Hamming distances between genuine and impostor fingerprint sets, and generating probability tables based on Hamming distance thresholds. 
+
+The code automates the process of:
+
+- Reading fingerprint images from specified folders,
+- Computing and saving image hashes,
+- Calculating pairwise Hamming distances for similarity analysis,
+- Producing frequency tables of similarity probabilities at various thresholds.
+
+This notebook is intended for fingerprint verification and image similarity analysis tasks.
+
+**Note:** The code in this notebook is adapted from the source referenced as https://github.com/JohannesBuchner/imagehash.
