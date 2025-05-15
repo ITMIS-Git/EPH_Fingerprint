@@ -1,3 +1,12 @@
+**Note:**
+- In Jupyter, command line arguments (`sys.argv[...]`) are replaced with variables or cell inputs.
+
+- Execute each logic block in order, making sure that all dependencies and I/O paths are set up accordingly.
+
+- Do not change the original logic or sequence; just adapt the way inputs are presented and outputs are handled for the notebook environment.
+
+## Summary Table
+
 | Script Name                  | Main Steps (in order)                                                                                  |
 |------------------------------|--------------------------------------------------------------------------------------------------------|
 | FPEnhancer.py                | Import → Define enhancer → List .bmp files → Enhance & save images                                     |
