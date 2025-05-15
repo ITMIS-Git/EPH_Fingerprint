@@ -1,3 +1,6 @@
+### Evaluation of perceptual hash techniques for biometric fingerprint authentication
+
+
 # Fingerprint Image Enhancement, Thinning, and Minutiae Extraction Pipeline
 
 This Jupyter notebook implements a pipeline for processing fingerprint images, including:
