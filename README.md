@@ -12,7 +12,7 @@ This Jupyter notebook implements a pipeline for processing fingerprint images, i
 
 **Note:** The code in this notebook was taken from source https://github.com/rn1357/PerceptualHashTechniques?tab=readme-ov-file.
 
-## Summary Table
+### Summary Table
 
 | Script Name                  | Main Steps (in order)                                                                                  |
 |------------------------------|--------------------------------------------------------------------------------------------------------|
