@@ -1,7 +1,6 @@
-### Evaluation of perceptual hash techniques for biometric fingerprint authentication
+# Evaluation of Perceptual Hash Techniques for Biometric Fingerprint Authentication
 
-
-# Fingerprint Image Enhancement, Thinning, and Minutiae Extraction Pipeline
+### Fingerprint Image Enhancement, Thinning, and Minutiae Extraction Pipeline
 
 This Jupyter notebook implements a pipeline for processing fingerprint images, including:
 - **Enhancement** of raw fingerprint images
@@ -24,7 +23,7 @@ This Jupyter notebook implements a pipeline for processing fingerprint images, i
 | HammingDistanceComparison.py | Import → Define distance function → Read hash CSVs → Compute robustness/discrimination → Save to CSV   |
 | Threshold.py                 | Import → Define threshold functions → Read Hamming CSVs → Analyze thresholds → Save to CSV             |
 
-# Fingerprint Perceptual Hashing and Hamming Distance Analysis
+### Fingerprint Perceptual Hashing and Hamming Distance Analysis
 
 This Jupyter notebook implements a pipeline for computing perceptual hashes of fingerprint images using multiple hashing techniques (average_hash, phash, dhash, whash), calculating Hamming distances between genuine and impostor fingerprint sets, and generating probability tables based on Hamming distance thresholds. 
 
