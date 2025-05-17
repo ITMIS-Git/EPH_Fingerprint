@@ -133,9 +133,9 @@ class FingerprintImageEnhancer:
         # The University of Western Australia
         # pk at csse uwa edu au
         # http://www.csse.uwa.edu.au/~pk
-        rows, cols = img.shape
-        normalized_im = self.__normalise(img)  # normalise to get zero mean and unit standard deviation
 
+        normalized_im = self.__normalise(img)  # normalise to get zero mean and unit standard deviation
+        rows, cols = img.shape
         new_rows = int(self.ridge_segment_blksze * np.ceil((float(rows)) / (float(self.ridge_segment_blksze))))
         new_cols = int(self.ridge_segment_blksze * np.ceil((float(cols)) / (float(self.ridge_segment_blksze))))
 
@@ -562,6 +562,10 @@ class FingerprintImageEnhancer:
         Returns:
             np.ndarray: return the enhanced image.
         """
+        # Convert to grayscale if the image is color
+        if len(img.shape) == 3:
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
         if resize:
             rows, cols = np.shape(img)
             aspect_ratio = np.double(rows) / np.double(cols)

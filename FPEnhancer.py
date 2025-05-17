@@ -9,7 +9,9 @@ def fingerPrintEnhancer(input_imgfolderpath, output_imgfolderpath):
     for imgpath in input_imgfolderpath:
         img_name = imgpath.split("/")[-1].split("_")[0]
         image = cv2.imread(imgpath)
-        out = fingerprint_enhancer.enhance_Fingerprint(image) #enhance the image using fingerprint_enhancer library
+        out = fingerprint_enhancer.enhance_fingerprint(image) #enhance the image using fingerprint_enhancer library
+        # Convert boolean array to uint8 (0 and 255)
+        out = (out * 255).astype(np.uint8)
         f_image = cv2.resize(out, (448, 480))
         output_path = os.path.join(output_imgfolderpath, f'{img_name}.jpg')
         ensure_dir_exists(output_path)
