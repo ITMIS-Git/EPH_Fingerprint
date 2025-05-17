@@ -3,10 +3,10 @@
 import csv,sys
 import pandas as pd
 from hexhamming import hamming_distance_string
+from utils import ensure_dir_exists
 ##########################################################
 def calculateHammingDistance(hash1, hash2):
-    HammingDistance = hamming_distance_string(hash1,hash2)
-    return HammingDistance
+    return sum(c1 != c2 for c1, c2 in zip(hash1, hash2))
 ##########################################################
 if __name__ == "__main__":
     hash1_csvfilepath = sys.argv[1]
@@ -22,6 +22,7 @@ if __name__ == "__main__":
     for i in range(len(hash1_readerDf)): 
         HammingDistanceForRobustness = calculateHammingDistance(hash1_readerDf.loc[i,"Hash"],hash2_readerDf.loc[i,"Hash"])
         HammingDistanceForRobustnessDict[hash1_readerDf.loc[i,"F_id"]] = HammingDistanceForRobustness
+    ensure_dir_exists(output_location_for_Robustness)
     with open(output_location_for_Robustness, 'w') as f3:
         w = csv.writer(f3)
         w.writerow(RobustnessHeader)
@@ -37,6 +38,7 @@ if __name__ == "__main__":
             hdlist.append(hash_readerDf.loc[j,"F_id"])
             hdlist.append(HammingDistanceForDiscrimination)
             HammingDistanceForDiscriminationList.append(hdlist)   
+    ensure_dir_exists(output_location_for_Discrimination)
     with open(output_location_for_Discrimination, 'w') as f4:
         w = csv.writer(f4)
         w.writerow(DiscriminationHeader)

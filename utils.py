@@ -5,6 +5,7 @@ import urllib.request
 import IPython
 import base64
 import html
+import os
 
 # Utility function to show an image
 def show(*images, enlarge_small_images = True, max_per_row = -1, font_size = 0):
@@ -153,3 +154,19 @@ def draw_match_pairs(f1, m1, v1, f2, m2, v2, cells_coords, pairs, i, show_cylind
         (x1, y1, *_), (x2, y2, *_) = m1[i1], m2[i2]
         cv.line(res, (int(x1), int(y1)), (w1+int(x2), int(y2)), (0,0,255) if k!=i else (0,255,255), 1, cv.LINE_AA)
     return res
+
+def ensure_dir_exists(filepath):
+    """
+    Ensures that the directory for the given filepath exists.
+    Creates all necessary parent directories if they don't exist.
+    
+    Args:
+        filepath (str): The path to the file that will be written
+        
+    Returns:
+        str: The directory path that was created/verified
+    """
+    directory = os.path.dirname(filepath)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
+    return directory

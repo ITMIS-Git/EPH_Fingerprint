@@ -3,14 +3,17 @@
 import fingerprint_enhancer					# Load the library 
 import cv2, os, sys
 import numpy as np
+from utils import ensure_dir_exists
 ##########################################################
 def fingerPrintEnhancer(input_imgfolderpath, output_imgfolderpath):
     for imgpath in input_imgfolderpath:
         img_name = imgpath.split("/")[-1].split("_")[0]
         image = cv2.imread(imgpath)
-        out = fingerprint_enhancer. enhance_Fingerprint(image) #enhance the image using fingerprint_enhancer library
+        out = fingerprint_enhancer.enhance_Fingerprint(image) #enhance the image using fingerprint_enhancer library
         f_image = cv2.resize(out, (448, 480))
-        cv2.imwrite(output_imgfolderpath + f'{img_name}.jpg', f_image)#files will be stored as file numbers corresponding to the raw file
+        output_path = os.path.join(output_imgfolderpath, f'{img_name}.jpg')
+        ensure_dir_exists(output_path)
+        cv2.imwrite(output_path, f_image)#files will be stored as file numbers corresponding to the raw file
 ##########################################################
 if __name__ == "__main__":
     input_folder = sys.argv[1]

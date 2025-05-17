@@ -6,6 +6,8 @@ import skimage.morphology
 from skimage.morphology import convex_hull_image, erosion
 from skimage.morphology import square
 import math
+import skimage.draw
+from utils import ensure_dir_exists
 ##########################################################
 class MinutiaeFeature(object):
     def __init__(self, locX, locY, Orientation, Type):
@@ -183,6 +185,7 @@ class FingerprintFeatureExtractor(object):
             row, col = curr_minutiae.locX, curr_minutiae.locY
             (rr, cc) = skimage.draw.circle_perimeter(row, col, 3)
             skimage.draw.set_color(DispImg, (rr, cc), (255, 0, 0))
+        ensure_dir_exists(img_loc)
         cv2.imwrite(img_loc, DispImg)
 
 def extract_minutiae_features(img, spuriousMinutiaeThresh=10, invertImage=False, showResult=False, saveResult=False, img_loc=None):
@@ -213,6 +216,7 @@ if __name__ == '__main__':
         img_name = imgpath.split("/")[-1].split("_")[0]
         image = cv2.imread(imgpath)
         grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        img_loc = output_folderpath + f'{img_name}'
-        FeaturesTerminations, FeaturesBifurcations = extract_minutiae_features (grayscale, spuriousMinutiaeThresh=10, invertImage=False, showResult=False, saveResult=True, img_loc=img_loc)
+        img_loc = os.path.join(output_folderpath, f'{img_name}')
+        ensure_dir_exists(img_loc)
+        FeaturesTerminations, FeaturesBifurcations = extract_minutiae_features(grayscale, spuriousMinutiaeThresh=10, invertImage=False, showResult=False, saveResult=True, img_loc=img_loc)
 ##########################################################

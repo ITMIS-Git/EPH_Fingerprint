@@ -2,20 +2,21 @@
 # Import dependencies
 import csv,sys
 import pandas as pd
+from utils import ensure_dir_exists
 ##########################################################
-def tableforRobustness(HammingDistanceListforRobustness,  threshold):
+def tableforRobustness(hamming_distances, threshold):
     count = 0
-    for i in HammingDistanceListforRobustness:
-        if i <= threshold:
-            count+=1
-    return count/len(HammingDistanceListforRobustness)
+    for hamming_distance in hamming_distances:
+        if hamming_distance <= threshold:
+            count += 1
+    return count/len(hamming_distances)
 
-def tableforDiscrimination(HammingDistanceListforDiscrimination,  threshold):
+def tableforDiscrimination(hamming_distances, threshold):
     count = 0
-    for i in HammingDistanceListforDiscrimination:
-        if i >= threshold:
-            count+=1
-    return count/len(HammingDistanceListforDiscrimination)
+    for hamming_distance in hamming_distances:
+        if hamming_distance >= threshold:
+            count += 1
+    return count/len(hamming_distances)
 ##########################################################
 if __name__ == "__main__":
     RobustnessDict = {}
@@ -41,10 +42,12 @@ if __name__ == "__main__":
             HammingDistanceListforDiscrimination.append(Discrimination_readerDf.loc[j,"Hamming Distance"])
         num_of_fingerprints_for_discrimination = tableforDiscrimination(HammingDistanceListforDiscrimination,  threshold)
         Dict[threshold] = round(num_of_fingerprints_for_discrimination,4)
+    ensure_dir_exists(Robustness_threshold)
     with open(Robustness_threshold, 'w') as f3:
         w1 = csv.writer(f3)
         w1.writerow(RobustnessHeader)
         w1.writerows(RobustnessDict.items())
+    ensure_dir_exists(Discrimination_threshold)
     with open(Discrimination_threshold, 'w') as f4:
         w2 = csv.writer(f4)
         w2.writerow(DiscriminationHeader)

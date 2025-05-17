@@ -2,7 +2,8 @@
 # Import dependencies
 from PIL import Image
 import imagehash
-import csv,os,sys
+import csv, os, sys
+from utils import ensure_dir_exists
 ##########################################################
 def hashCalculation(hashTechnique, input_filepath, output_loc):
     HashValuesList = []
@@ -36,6 +37,7 @@ def hashCalculation(hashTechnique, input_filepath, output_loc):
                 print("Please input correct hash technique listed")
         HashValuesList.append(HashValues)
     #writing into csv file   
+    ensure_dir_exists(output_loc)
     with open(output_loc, 'w', newline="") as f1:
         writer = csv.writer(f1)
         writer.writerow(header)

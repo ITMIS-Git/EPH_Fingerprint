@@ -5,6 +5,7 @@ import numpy as np
 import math
 import os, sys
 from matplotlib import pyplot as plt 
+from utils import ensure_dir_exists
 ##########################################################
 f = lambda x,y: 2*x*y 
 g = lambda x,y: x**2 - y**2 
@@ -119,5 +120,7 @@ if __name__ == '__main__':
         h, w = gray.shape  
         orientationImg = draw_lines(h, w, 3, angles, KSIZE) 
         orientation_draw = draw_orientation(h, w, angles, KSIZE)  
-        cv2.imwrite(out_folderpath + f'{img_name}.jpg', orientationImg) 
+        output_path = os.path.join(out_folderpath, f'{img_name}.jpg')
+        ensure_dir_exists(output_path)
+        cv2.imwrite(output_path, orientationImg) 
 ##########################################################
